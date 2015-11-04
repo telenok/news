@@ -1,0 +1,40 @@
+{
+    "name": "telenok/news",
+    "description": "Telenok CMS News package",
+    "keywords": ["telenok", "core", "laravel"],
+    "homepage": "http://telenok.com",
+    "license": "commercial",
+    "support": {
+        "email": "support@telenok.com",
+        "issues": "https://github.com/telenok/news/issues"
+    },
+    "authors": [
+        {
+            "name": "Kiselevich Konstantin",
+            "email": "support@telenok.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "telenok/core": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Telenok\\News": "src/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "php artisan vendor:publish --tag=\"resources-app\" --provider=\"Telenok\\News\\NewsServiceProvider\"",
+            "php artisan migrate --path=\"vendor/telenok/news/src/migrations\" --force"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
