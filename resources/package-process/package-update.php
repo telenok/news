@@ -6,7 +6,7 @@
 
     $this->call('telenok:package', [
         'action' => 'add-provider', 
-        '--provider' => 'Telenok\\News\\NewsServiceProvider',
+        '--provider' => 'Telenok\News\NewsServiceProvider',
     ]);   
 
     $this->line('Package new classes copy');

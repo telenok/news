@@ -4,7 +4,18 @@ use Illuminate\Support\ServiceProvider;
 
 class NewsServiceProvider extends ServiceProvider {
 
-    protected $defer = false;
+    /**
+     * Create a new service provider instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @return void
+     */
+    public function __construct(Application $app)
+    {
+        parent::__construct($app);
+
+        include __DIR__ . '/../../config/event.php';
+    }
 
     /**
      * @method boot
@@ -20,7 +31,6 @@ class NewsServiceProvider extends ServiceProvider {
         $this->publishes([realpath(__DIR__ . '/../../../resources/app') => app_path()], 'resourcesapp');
         
         include __DIR__ . '/../../config/routes.php';
-        include __DIR__ . '/../../config/event.php';
     }
 
     public function provides()

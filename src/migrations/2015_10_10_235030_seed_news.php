@@ -25,7 +25,7 @@ class SeedNews extends Migration {
                     ]
             );
 
-            // Create Obkect Type NewsCategory
+            // Create Object Type NewsCategory
             $typeNewsCategory = (new \App\Telenok\Core\Model\Object\Type())->storeOrUpdate(
                 [
                     'title' => ['ru' => "Категория новости", 'en' => "News category"], 
