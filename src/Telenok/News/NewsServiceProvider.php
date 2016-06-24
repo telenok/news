@@ -6,19 +6,6 @@ use Illuminate\Contracts\Foundation\Application;
 class NewsServiceProvider extends ServiceProvider {
 
     /**
-     * Create a new service provider instance.
-     *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @return void
-
-    public function __construct(Application $app)
-    {
-        parent::__construct($app);
-
-        include __DIR__ . '/../../config/event.php';
-    }
-     */
-    /**
      * @method boot
      * Load config, routers, create singletons and others.
      * @return {void}

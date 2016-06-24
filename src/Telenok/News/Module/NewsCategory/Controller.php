@@ -5,5 +5,5 @@ class Controller extends \Telenok\Core\Abstraction\Presentation\TreeTabObject\Co
     protected $key = 'news-category';
     protected $icon = 'fa fa-newspaper-o';
     protected $presentation = 'tree-tab-object';
-    protected $modelListClass = '\App\Telenok\News\Model\NewsCategory';
+    protected $modelListClass = '\App\Vendor\Telenok\News\Model\NewsCategory';
 }

@@ -1,6 +1,6 @@
 <?php namespace Telenok\News\Model;
 
-class News extends \App\Telenok\Core\Abstraction\Eloquent\Object\Model {
+class News extends \App\Vendor\Telenok\Core\Abstraction\Eloquent\Object\Model {
 
 	protected $table = 'news';
     

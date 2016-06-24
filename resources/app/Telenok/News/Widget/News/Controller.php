@@ -1,4 +1,4 @@
-<?php namespace App\Telenok\News\Widget\News;
+<?php namespace App\Vendor\Telenok\News\Widget\News;
 
 class Controller extends \Telenok\News\Widget\News\Controller { 
     

@@ -7,7 +7,7 @@
 
 	$news = ['<option></option>'];
 
-	foreach(\App\Telenok\News\Model\News::active()->take(100)->orderBy('id', 'desc')->get() as $v)
+	foreach(\App\Vendor\Telenok\News\Model\News::active()->take(100)->orderBy('id', 'desc')->get() as $v)
 	{
 		$news[] = "<option value='" . $v->getKey() . "' " . ($v->getKey() == $newsId ? 'selected' : '') . ">" . e($v->translate('title')) . "</option>";
 	}
@@ -26,7 +26,7 @@
                     keepTypingMsg: "{{$controller->LL('notice.typing')}}",
                     lookingForMsg: "{{$controller->LL('notice.looking-for')}}",
                     type: "GET",
-                    url: "{!! route("telenok.module.objects-lists.list.json", ['treeId' => app('\App\Telenok\News\Model\News')->type()->getKey()]) !!}",
+                    url: "{!! route("telenok.module.objects-lists.list.json", ['treeId' => app('\App\Vendor\Telenok\News\Model\News')->type()->getKey()]) !!}",
                     dataType: "json",
                     minTermLength: 1,
                     afterTypeDelay: 1000

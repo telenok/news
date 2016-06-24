@@ -7,8 +7,8 @@ class Listener {
     public function subscribe($events)
     {
         $events->listen(
-            'App\Telenok\Core\Event\RepositoryPackage',
-            'App\Telenok\News\Event\Listener@onRepositoryPackage'
+            'Telenok\Core\Event\RepositoryPackage',
+            'App\Vendor\Telenok\News\Event\Listener@onRepositoryPackage'
         );
     }
 }

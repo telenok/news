@@ -2,7 +2,7 @@
 
 namespace Telenok\News\Widget\News;
 
-class Controller extends \App\Telenok\Core\Abstraction\Widget\Controller {
+class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller {
 
     protected $key = 'news';
     protected $parent = 'news';
@@ -43,7 +43,7 @@ class Controller extends \App\Telenok\Core\Abstraction\Widget\Controller {
         $news = \Cache::remember(
                 $this->getCacheKey('news'), $this->getCacheTime(), function()
                 {
-                    $model = app('\App\Telenok\News\Model\News');
+                    $model = app('\App\Vendor\Telenok\News\Model\News');
 
                     return $model
                         ->active()

@@ -10,23 +10,23 @@ class SeedNews extends Migration {
         try
         {
             // Off permission validator
-            \App\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
+            \App\Vendor\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
                     ->update(['value' => 0]);
 
             // Create Obkect Type News
-            $typeNews = (new \App\Telenok\Core\Model\Object\Type())->storeOrUpdate(
+            $typeNews = (new \App\Vendor\Telenok\Core\Model\Object\Type())->storeOrUpdate(
                     [
                         'title' => ['ru' => "Новость", 'en' => "News"], 
                         'title_list' => ['ru' => "Новость", 'en' => "News"],
 						'code' => 'news',
 						'active' => 1,
-						'class_model' => '\App\Telenok\News\Model\News',
-						'class_controller' => '\App\Telenok\News\Module\News\Controller',
+						'class_model' => '\App\Vendor\Telenok\News\Model\News',
+						'class_controller' => '\App\Vendor\Telenok\News\Module\News\Controller',
                     ]
             );
 
             // Create Object Type NewsCategory
-            $typeNewsCategory = (new \App\Telenok\Core\Model\Object\Type())->storeOrUpdate(
+            $typeNewsCategory = (new \App\Vendor\Telenok\Core\Model\Object\Type())->storeOrUpdate(
                 [
                     'title' => ['ru' => "Категория новости", 'en' => "News category"], 
                     'title_list' => ['ru' => "Категория новости", 'en' => "News category"],
@@ -34,13 +34,13 @@ class SeedNews extends Migration {
                     'active' => 1,
                     'treeable' => 1,
                     'multilanguage' => 1,
-                    'class_model' => '\App\Telenok\News\Model\NewsCategory',
-                    'class_controller' => '\App\Telenok\News\Module\NewsCategory\Controller',
+                    'class_model' => '\App\Vendor\Telenok\News\Model\NewsCategory',
+                    'class_controller' => '\App\Vendor\Telenok\News\Module\NewsCategory\Controller',
                 ]
             );
 
             // Folder News
-            $folderNews = (new \App\Telenok\Core\Model\System\Folder())->storeOrUpdate([
+            $folderNews = (new \App\Vendor\Telenok\Core\Model\System\Folder())->storeOrUpdate([
                 'title' => ['en' => 'News', 'ru' => 'Новости'],
                 'active' => 1,
                 'code' => 'news',
@@ -52,7 +52,7 @@ class SeedNews extends Migration {
 
             
             // Type News
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Url', 'ru' => 'Url'],
                 'title_list' => ['en' => 'Url', 'ru' => 'Url'],
                 'key' => 'string',
@@ -70,7 +70,7 @@ class SeedNews extends Migration {
                 'string_unique' => 1,
             ]);
 
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Announcement', 'ru' => 'Анонс'],
                 'title_list' => ['en' => 'Announcement', 'ru' => 'Анонс'],
                 'key' => 'text',
@@ -88,7 +88,7 @@ class SeedNews extends Migration {
                 'text_rte' => 1,
             ]);
 
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Content', 'ru' => 'Содержание'],
                 'title_list' => ['en' => 'Content', 'ru' => 'Содержание'],
                 'key' => 'text',
@@ -106,7 +106,7 @@ class SeedNews extends Migration {
                 'text_rte' => 1,
             ]);
 
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Pictures', 'ru' => 'Изображения'],
                 'title_list' => ['en' => 'Pictures', 'ru' => 'Изображения'],
                 'key' => 'file-many-to-many',
@@ -125,7 +125,7 @@ class SeedNews extends Migration {
 
             try
             {
-                (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+                (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                     'title' => ['en' => 'Language', 'ru' => 'Язык'],
                     'title_list' => ['en' => 'Language', 'ru' => 'Язык'],
                     'key' => 'relation-one-to-many',
@@ -147,7 +147,7 @@ class SeedNews extends Migration {
 
             
             // Type NewsCategory
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Description', 'ru' => 'Описание'],
                 'title_list' => ['en' => 'Description', 'ru' => 'Описание'],
                 'key' => 'text',
@@ -165,7 +165,7 @@ class SeedNews extends Migration {
                 'text_rte' => 1,
             ]);
 
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Url', 'ru' => 'Url'],
                 'title_list' => ['en' => 'Url', 'ru' => 'Url'],
                 'key' => 'string',
@@ -183,7 +183,7 @@ class SeedNews extends Migration {
                 'string_unique' => 1,
             ]);
 
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'News', 'ru' => 'Новости'],
                 'title_list' => ['en' => 'News', 'ru' => 'Новости'],
                 'key' => 'relation-many-to-many',
@@ -201,7 +201,7 @@ class SeedNews extends Migration {
                 'field_order' => 10,
             ]);
             
-            (new \App\Telenok\Core\Model\Object\Field())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title' => ['en' => 'Category to show in', 'ru' => 'Показывать в категории'],
                 'title_list' => ['en' => 'Category to show in', 'ru' => 'Показывать в категории'],
                 'key' => 'relation-one-to-many',
@@ -220,35 +220,35 @@ class SeedNews extends Migration {
             ]);
             
             // Widget group
-            (new \App\Telenok\Core\Model\Web\WidgetGroup())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Web\WidgetGroup())->storeOrUpdate([
                 'title' => ['en' => 'News', 'ru' => 'Новости'],
                 'active' => 1,
-                'controller_class' => '\App\Telenok\News\WidgetGroup\News\Controller',
+                'controller_class' => '\App\Vendor\Telenok\News\WidgetGroup\News\Controller',
             ]);
 
             // Widget
-            (new \App\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
                 'title' => ['en' => 'Category', 'ru' => 'Категория'],
                 'active' => 1,
-                'controller_class' => '\App\Telenok\News\Widget\NewsCategory\Controller',
+                'controller_class' => '\App\Vendor\Telenok\News\Widget\NewsCategory\Controller',
             ]);
 
-            (new \App\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
                 'title' => ['en' => 'News', 'ru' => 'Новости'],
                 'active' => 1,
-                'controller_class' => '\App\Telenok\News\Widget\News\Controller',
+                'controller_class' => '\App\Vendor\Telenok\News\Widget\News\Controller',
             ]);
 
-            (new \App\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
+            (new \App\Vendor\Telenok\Core\Model\Web\Widget())->storeOrUpdate([
                 'title' => ['en' => 'News List', 'ru' => 'Список новостей'],
                 'active' => 1,
-                'controller_class' => '\App\Telenok\News\Widget\NewsList\Controller',
+                'controller_class' => '\App\Vendor\Telenok\News\Widget\NewsList\Controller',
             ]);
         }
         finally
         {
             // On permission validator
-            \App\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
+            \App\Vendor\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
                     ->update(['value' => 1]);
         }
     }

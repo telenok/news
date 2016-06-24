@@ -6,7 +6,7 @@
 
 	$categories = ['<option></option>'];
 
-	foreach(\App\Telenok\News\Model\NewsCategory::active()->get() as $v)
+	foreach(\App\Vendor\Telenok\News\Model\NewsCategory::active()->get() as $v)
 	{
 		$categories[] = "<option value='" . $v->getKey() . "' " . ($v->getKey() == $categoryId ? 'selected' : '') . ">" . e($v->translate('title')) . "</option>";
 	}

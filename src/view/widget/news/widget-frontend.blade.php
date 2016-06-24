@@ -16,7 +16,7 @@ $controllerRequest->setPageMetaTitle($news->translate('title'));
 @foreach($news->image()->get() as $image)
     <img src="{!! $image->upload->downloadImageLink(
             380, 630,
-            \App\Telenok\Core\Support\Image\Processing::TODO_RESIZE_PROPORTION) !!}" 
+            \App\Vendor\Telenok\Core\Support\Image\Processing::TODO_RESIZE_PROPORTION) !!}"
             title="{{ $image->translate('title') }}"
     />
 @endforeach

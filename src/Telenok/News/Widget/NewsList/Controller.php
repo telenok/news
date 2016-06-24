@@ -1,6 +1,6 @@
 <?php namespace Telenok\News\Widget\NewsList;
 
-class Controller extends \App\Telenok\Core\Abstraction\Widget\Controller {
+class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller {
 
     protected $key = 'news-list';
     protected $parent = 'news';
@@ -101,7 +101,7 @@ class Controller extends \App\Telenok\Core\Abstraction\Widget\Controller {
             $this->getCacheTime(), 
             function()
             {
-                $newsModel = app('\App\Telenok\News\Model\News');
+                $newsModel = app('\App\Vendor\Telenok\News\Model\News');
 
                 $query = $newsModel->withPermission()->with('newsShowInNewsCategory');
 
@@ -114,7 +114,7 @@ class Controller extends \App\Telenok\Core\Abstraction\Widget\Controller {
                 
                 if ($catIds = $this->getCategoryIds())
                 {
-                    $newsCategoryModel = app('\App\Telenok\News\Model\NewsCategory');
+                    $newsCategoryModel = app('\App\Vendor\Telenok\News\Model\NewsCategory');
 
                     $categoryIds = $newsCategoryModel->withPermission()
                             ->active()
