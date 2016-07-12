@@ -10,8 +10,7 @@ class SeedNews extends Migration {
         try
         {
             // Off permission validator
-            \App\Vendor\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
-                    ->update(['value' => 0]);
+            config(['app.acl.enabled' => 0]);
 
             // Create Obkect Type News
             $typeNews = (new \App\Vendor\Telenok\Core\Model\Object\Type())->storeOrUpdate(
@@ -248,8 +247,7 @@ class SeedNews extends Migration {
         finally
         {
             // On permission validator
-            \App\Vendor\Telenok\Core\Model\System\Setting::where('code', 'app.acl.enabled')
-                    ->update(['value' => 1]);
+            config(['app.acl.enabled' => 1]);
         }
     }
 }
