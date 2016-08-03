@@ -27,6 +27,12 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
         return $this;
     }
 
+    /**
+     * @param $model
+     * @param $type
+     * @param $input
+     * @return $this
+     */
     public function preProcess($model, $type, $input)
     {
         $structure = $input->get('structure');

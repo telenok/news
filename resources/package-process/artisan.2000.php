@@ -1,6 +1,7 @@
 <?php
 
     app()->register('App\Vendor\Telenok\News\NewsServiceProvider');
+    app('events')->subscribe('App\Vendor\Telenok\News\Event\Listener');
 
     if (app('\App\Vendor\Telenok\Core\Support\Install\Controller')->isTelenokInstalled())
     {

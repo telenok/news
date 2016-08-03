@@ -1,0 +1,11 @@
+<?php
+
+return array(
+    'name' => 'News list',
+    'header' => 'News list',
+    
+    'title.category_ids' => 'Choose categories',
+    'title.ignore_page' => 'Ignore page in URL',
+    'title.per_page' => 'Per page',
+    'title.order_by' => 'Order by field',
+);
