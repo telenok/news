@@ -46,7 +46,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
                 return $model::active()
                     ->active()
                     ->withPermission()
-                    ->where(function($query)
+                    ->where(function($query) use ($model)
                     {
                         $query->where($model->getTable() . '.url_pattern', $this->newsCategoryUrl);
                         $query->orWhere($model->getTable() . '.id', $this->newsCategoryId);

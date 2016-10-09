@@ -119,7 +119,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
                     $categoryIds = $newsCategoryModel->withPermission()
                             ->active()
                             ->whereIn($newsCategoryModel->getTable() . '.id', $catIds)
-                            ->lists('id');
+                            ->pluck('id');
 
                     $query->whereHas('newsNewsCategory', function($query) use ($newsCategoryModel, $categoryIds)
                     {
