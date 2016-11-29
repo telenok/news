@@ -12,15 +12,15 @@ class SeedNews extends Migration {
             // Off permission validator
             config(['app.acl.enabled' => 0]);
 
-            // Create Obkect Type News
+            // Create Object Type News
             $typeNews = (new \App\Vendor\Telenok\Core\Model\Object\Type())->storeOrUpdate(
                     [
                         'title' => ['ru' => "Новость", 'en' => "News"], 
                         'title_list' => ['ru' => "Новость", 'en' => "News"],
 						'code' => 'news',
 						'active' => 1,
-						'class_model' => '\App\Vendor\Telenok\News\Model\News',
-						'class_controller' => '\App\Vendor\Telenok\News\Module\News\Controller',
+						'model_class' => '\App\Vendor\Telenok\News\Model\News',
+						'controller_class' => '\App\Vendor\Telenok\News\Module\News\Controller',
                     ]
             );
 
@@ -33,8 +33,8 @@ class SeedNews extends Migration {
                     'active' => 1,
                     'treeable' => 1,
                     'multilanguage' => 1,
-                    'class_model' => '\App\Vendor\Telenok\News\Model\NewsCategory',
-                    'class_controller' => '\App\Vendor\Telenok\News\Module\NewsCategory\Controller',
+                    'model_class' => '\App\Vendor\Telenok\News\Model\NewsCategory',
+                    'controller_class' => '\App\Vendor\Telenok\News\Module\NewsCategory\Controller',
                 ]
             );
 
