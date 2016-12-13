@@ -103,15 +103,16 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
             {
                 $newsModel = app('\App\Vendor\Telenok\News\Model\News');
 
-                $query = $newsModel->withPermission()->with('newsShowInNewsCategory');
+                $query = $newsModel->select()->withPermission()->with('newsShowInNewsCategory');
 
-                $query->whereHas('newsLanguageLanguage', function($query)
+                $query->join('object_translation', function($query) use ($newsModel)
                 {
-                    $query->where('locale', config('app.locale'));
-                    $query->orWhereNull('locale');
+                    $query->on($newsModel->getTable(). '.id' , '=', 'object_translation.translation_object_model_id')
+                        ->where('object_translation.translation_object_field_code', '=', 'title')
+                        ->where('object_translation.translation_object_language', '=', config('app.locale'))
+                        ->whereNotNull('object_translation.translation_object_string');
                 });
 
-                
                 if ($catIds = $this->getCategoryIds())
                 {
                     $newsCategoryModel = app('\App\Vendor\Telenok\News\Model\NewsCategory');

@@ -123,31 +123,6 @@ class SeedNews extends Migration
                 'field_order'       => 9,
             ]);
 
-            try
-            {
-                (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
-                    'title'                     => ['en' => 'Language', 'ru' => 'Язык'],
-                    'title_list'                => ['en' => 'Language', 'ru' => 'Язык'],
-                    'key'                       => 'relation-many-to-many',
-                    'code'                      => 'news_language',
-                    'active'                    => 1,
-                    'field_object_type'         => 'language',
-                    'field_object_tab'          => 'main',
-                    'relation_many_to_many_has' => 'news',
-                    'multilanguage'             => 0,
-                    'show_in_form'              => 1,
-                    'show_in_list'              => 0,
-                    'allow_search'              => 1,
-                    'allow_create'              => 1,
-                    'allow_update'              => 1,
-                    'field_order'               => 8,
-                ]);
-            }
-            catch (\Exception $e)
-            {
-            }
-
-
             // Type NewsCategory
             (new \App\Vendor\Telenok\Core\Model\Object\Field())->storeOrUpdate([
                 'title'             => ['en' => 'Description', 'ru' => 'Описание'],
