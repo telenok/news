@@ -22,6 +22,7 @@ class SeedNews extends Migration
                     'active'           => 1,
                     'model_class'      => '\App\Vendor\Telenok\News\Model\News',
                     'controller_class' => '\App\Vendor\Telenok\News\Module\News\Controller',
+                    'multilanguage'    => 1,
                 ]
             );
 
@@ -78,7 +79,7 @@ class SeedNews extends Migration
                 'active'            => 1,
                 'field_object_type' => 'news',
                 'field_object_tab'  => 'main',
-                'multilanguage'     => 0,
+                'multilanguage'     => 1,
                 'show_in_form'      => 1,
                 'show_in_list'      => 1,
                 'allow_search'      => 1,
@@ -96,7 +97,7 @@ class SeedNews extends Migration
                 'active'            => 1,
                 'field_object_type' => 'news',
                 'field_object_tab'  => 'main',
-                'multilanguage'     => 0,
+                'multilanguage'     => 1,
                 'show_in_form'      => 1,
                 'show_in_list'      => 1,
                 'allow_search'      => 1,

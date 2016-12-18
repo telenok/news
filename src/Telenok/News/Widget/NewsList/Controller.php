@@ -16,7 +16,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
     public function setConfig($config = [])
     {
         parent::setConfig($config);
-        
+
         if ($m = $this->getWidgetModel())
         {
             $structure = $m->structure;
@@ -25,7 +25,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
             $this->categoryIds = (array)array_get($structure, 'category_ids');
             $this->ignorePage = (bool)array_get($structure, 'ignore_page', $this->ignorePage);
         }
-        else 
+        else
         {
             $this->perPage = (int)$this->getConfig('per_page', $this->perPage)?:$this->perPage;
             $this->categoryIds = (array)$this->getConfig('category_ids', $this->categoryIds);
@@ -35,7 +35,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
 
         $this->page = $this->getRequest()->get('p', $this->page);
         $this->newsCategoryUrlPattern = app('router')->getCurrentRoute()->getParameter('news_category_url_pattern');
-        
+
         return $this;
     }
 
@@ -65,7 +65,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
     }
 
     public function preProcess($model, $type, $input)
-    { 
+    {
         $structure = $input->get('structure');
 
         $structure['per_page'] = (int)array_get($structure, 'per_page');
@@ -73,7 +73,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
         $structure['ignore_page'] = (bool)array_get($structure, 'ignore_page');
 
         $input->put('structure', $structure);
-        
+
         return parent::preProcess($model, $type, $input);
     }
 
@@ -81,7 +81,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
 	{
         if ($key = parent::getCacheKey($additional))
         {
-            return $key 
+            return $key
                     . implode('', $this->getCategoryIds())
                     . $this->getNewsCategoryUrlPattern()
                     . $this->getPerPage()
@@ -97,13 +97,13 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
 	public function getNotCachedContent()
 	{
         $news = \Cache::remember(
-            $this->getCacheKey('newsCategory'), 
-            $this->getCacheTime(), 
+            $this->getCacheKey('newsCategory'),
+            $this->getCacheTime(),
             function()
             {
                 $newsModel = app('\App\Vendor\Telenok\News\Model\News');
 
-                $query = $newsModel->select()->withPermission()->with('newsShowInNewsCategory');
+                $query = $newsModel->withPermission()->with('newsShowInNewsCategory');
 
                 $query->join('object_translation', function($query) use ($newsModel)
                 {
@@ -148,7 +148,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
             });
 
         return view($this->getFrontendView(), [
-                        'controller' => $this, 
+                        'controller' => $this,
                         'news' => $news,
                     ])->render();
 	}
