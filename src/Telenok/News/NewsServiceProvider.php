@@ -16,11 +16,11 @@ class NewsServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(realpath(__DIR__ . '/../../view'), 'news');
         $this->loadTranslationsFrom(realpath(__DIR__ . '/../../lang'), 'news');
         $this->publishes([realpath(__DIR__ . '/../../../resources/app') => app_path()], 'resourcesapp');
-        
-        include __DIR__ . '/../../config/routes.php';
+        $this->loadRoutesFrom(__DIR__ . '/../../config/routes.php');
     }
 
     public function register()
     {
+        $this->app['events']->subscribe(\App\Vendor\Telenok\News\Event\Subscribe::class);
     }
 }

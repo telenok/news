@@ -17,7 +17,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
                 && ($this->newsCategoryId = array_get($structure, 'category_id'))) {}
         else 
         {
-            $this->newsCategoryUrl = app('router')->getCurrentRoute()->getParameter('news_category_url_pattern');
+            $this->newsCategoryUrl = app('router')->getCurrentRoute()->parameter('news_category_url_pattern');
         }
 
         return $this;
@@ -41,7 +41,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
             $this->getCacheTime(), 
             function()
             {   
-                $model = app('\App\Vendor\Telenok\News\Model\NewsCategory');
+                $model = new \App\Vendor\Telenok\News\Model\NewsCategory();
             
                 return $model::active()
                     ->active()

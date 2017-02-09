@@ -20,8 +20,8 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
         }
         else
         {
-            $this->newsUrlId = app('router')->getCurrentRoute()->getParameter('news_id');
-            $this->newsUrlPattern = app('router')->getCurrentRoute()->getParameter('news_url_pattern');
+            $this->newsUrlId = app('router')->getCurrentRoute()->parameter('news_id');
+            $this->newsUrlPattern = app('router')->getCurrentRoute()->parameter('news_url_pattern');
         }
 
         return $this;
@@ -49,7 +49,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
         $news = \Cache::remember(
                 $this->getCacheKey('news'), $this->getCacheTime(), function()
                 {
-                    $model = app('\App\Vendor\Telenok\News\Model\News');
+                    $model = new \App\Vendor\Telenok\News\Model\News();
 
                     return $model
                         ->active()

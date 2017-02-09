@@ -26,7 +26,7 @@
                     keepTypingMsg: "{{$controller->LL('notice.typing')}}",
                     lookingForMsg: "{{$controller->LL('notice.looking-for')}}",
                     type: "GET",
-                    url: "{!! route("telenok.module.objects-lists.list.json", ['treeId' => app('\App\Vendor\Telenok\News\Model\News')->type()->getKey()]) !!}",
+                    url: "{!! route("telenok.module.objects-lists.list.json", ['treeId' => (new \App\Vendor\Telenok\News\Model\News())->type()->getKey()]) !!}",
                     dataType: "json",
                     minTermLength: 1,
                     afterTypeDelay: 1000

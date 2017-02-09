@@ -34,7 +34,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
         }
 
         $this->page = $this->getRequest()->get('p', $this->page);
-        $this->newsCategoryUrlPattern = app('router')->getCurrentRoute()->getParameter('news_category_url_pattern');
+        $this->newsCategoryUrlPattern = app('router')->getCurrentRoute()->parameter('news_category_url_pattern');
 
         return $this;
     }
@@ -101,7 +101,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
             $this->getCacheTime(),
             function()
             {
-                $newsModel = app('\App\Vendor\Telenok\News\Model\News');
+                $newsModel = new \App\Vendor\Telenok\News\Model\News();
 
                 $query = $newsModel->withPermission()->with('newsShowInNewsCategory');
 
@@ -115,7 +115,7 @@ class Controller extends \App\Vendor\Telenok\Core\Abstraction\Widget\Controller 
 
                 if ($catIds = $this->getCategoryIds())
                 {
-                    $newsCategoryModel = app('\App\Vendor\Telenok\News\Model\NewsCategory');
+                    $newsCategoryModel = new \App\Vendor\Telenok\News\Model\NewsCategory();
 
                     $categoryIds = $newsCategoryModel->withPermission()
                             ->active()

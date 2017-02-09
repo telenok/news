@@ -2,7 +2,7 @@
 
 use Telenok\Core\Event\RepositoryPackage;
 
-class Listener {
+class Subscribe {
 
     public function onRepositoryPackage(RepositoryPackage $event)
     {
@@ -18,7 +18,7 @@ class Listener {
     {
         $events->listen(
             'Telenok\Core\Event\RepositoryPackage',
-            'App\Vendor\Telenok\News\Event\Listener@onRepositoryPackage'
+            'App\Vendor\Telenok\News\Event\Subscribe@onRepositoryPackage'
         );
     }
 }
